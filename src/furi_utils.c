@@ -1,4 +1,4 @@
-#include "src/furi_utils.h"
+#include "furi_utils.h"
 #include <furi_hal.h>
 
 /**
