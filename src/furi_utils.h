@@ -4,7 +4,8 @@
 #include <gui/modules/variable_item_list.h>
 
 #define FURI_UTILS_TAG "FURI_UTILS"
-#define MEMCCPY        true
+#define MEMCCPY        false
+#define NO_PAGE_NUM    -99
 
 uint32_t futils_random_limit(int32_t min, int32_t max);
 bool futils_random_bool();

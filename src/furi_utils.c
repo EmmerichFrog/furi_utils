@@ -98,12 +98,14 @@ void futils_draw_header(
     canvas_draw_str(canvas, 0, y_pos, title);
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_line(canvas, 0, y_pos + 1, 126, y_pos + 1);
-    char page_num[6];
-    snprintf(page_num, sizeof(page_num), "%i", curr_page);
+    if(curr_page != NO_PAGE_NUM) {
+        char page_num[6];
+        snprintf(page_num, sizeof(page_num), "%i", curr_page);
 
-    canvas_set_font(canvas, FontPrimary);
-    canvas_draw_str(canvas, 116, y_pos, page_num);
-    canvas_set_font(canvas, FontSecondary);
+        canvas_set_font(canvas, FontPrimary);
+        canvas_draw_str(canvas, 116, y_pos, page_num);
+        canvas_set_font(canvas, FontSecondary);
+    }
 }
 
 /**
@@ -266,7 +268,9 @@ void futils_copy_str(
                 dest);
         } else {
             FURI_LOG_I(
-                FURI_UTILS_TAG, "Possibly truncated  string in check sizes. Curr. value: %s", dest);
+                FURI_UTILS_TAG,
+                "Possibly truncated  string in check sizes. Curr. value: %s",
+                dest);
         }
     } else if(ret < 0) {
         if(dbg_func && dbg_name) {
